@@ -14,9 +14,19 @@ public class TeamRepositoryImpl extends AbstractRepository<Team> implements Team
     @Value("${teams.service.url}")
     private String teamServiceUrl;
 
+    public TeamRepositoryImpl(){
+        super(Team.class);
+    }
+
     @Override
     public Optional<Team> findById(Integer id) {
         URI uri = getURI(teamServiceUrl, String.valueOf(id));
-        return getForEntity(uri, Team.class);
+        return getOptionalForEntity(uri, Team.class);
+    }
+
+    @Override
+    public Optional<Team> findLastTeamByPlayerId(Integer playerId) {
+        URI uri = getURI(teamServiceUrl, "last/player/" + playerId);
+        return getOptionalForEntity(uri, Team.class);
     }
 }

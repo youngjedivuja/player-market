@@ -17,4 +17,9 @@ public class TeamServiceImpl implements TeamService {
     public Team findById(Integer id) {
         return teamRepository.findById(id).orElseThrow(() -> new NoSuchElementException("TeamService.notFound"));
     }
+
+    @Override
+    public Team findLastTeamByPlayerId(Integer playerId) {
+        return teamRepository.findLastTeamByPlayerId(playerId).orElseThrow(() -> new NoSuchElementException("TeamService.team.notFound"));
+    }
 }

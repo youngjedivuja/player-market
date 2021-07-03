@@ -16,9 +16,19 @@ public class PlayerRepositoryImpl extends AbstractRepository<Player> implements 
     @Value("${players.service.url}")
     private String playerServiceUrl;
 
+    public PlayerRepositoryImpl() {
+        super(Player.class);
+    }
+
     @Override
     public Optional<Player> findById(Integer id) {
         URI uri = getURI(playerServiceUrl, String.valueOf(id));
-        return getForEntity(uri, Player.class);
+        return getOptionalForEntity(uri, Player.class);
+    }
+
+    @Override
+    public Integer calculateExperience(Integer id) {
+        URI uri = getURI(playerServiceUrl, "experience/" + id);
+        return getResponseForEntity(uri).getBody();
     }
 }

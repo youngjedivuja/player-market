@@ -16,4 +16,6 @@ public interface TeamService {
 
 	void deleteById(Integer teamId);
 
+	Team findLastTeamByPlayerId(Integer playerId);
+
 }

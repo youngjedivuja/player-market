@@ -14,4 +14,6 @@ public interface ContractService {
     Contract findById(Integer contractId);
 
     void deleteById(Integer contractId);
+
+    Contract findFinalContractByPlayerId(Integer playerId);
 }

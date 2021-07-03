@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface TeamRepository {
     Optional<Team> findById(Integer id);
+
+    Optional<Team> findLastTeamByPlayerId(Integer playerId);
 }

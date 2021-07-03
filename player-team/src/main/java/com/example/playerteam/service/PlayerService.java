@@ -16,4 +16,6 @@ public interface PlayerService {
 
 	void deleteById(Integer playerId);
 
+	Integer calculateExperience(Integer playerId);
+
 }

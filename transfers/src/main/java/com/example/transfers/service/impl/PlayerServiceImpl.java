@@ -17,4 +17,9 @@ public class PlayerServiceImpl implements PlayerService {
     public Player findById(Integer id) {
         return playerRepository.findById(id).orElseThrow(() -> new NoSuchElementException("PlayerServiceImpl.notFound"));
     }
+
+    @Override
+    public Integer calculateExperience(Integer playerId) {
+        return playerRepository.calculateExperience(playerId);
+    }
 }

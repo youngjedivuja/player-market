@@ -6,4 +6,6 @@ import java.util.Optional;
 
 public interface PlayerRepository {
     Optional<Player> findById(Integer id);
+
+    Integer calculateExperience(Integer id);
 }

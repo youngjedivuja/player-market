@@ -39,5 +39,10 @@ public class PlayerController {
 		playerService.deleteById(playerId);
 	}
 
+	@GetMapping("/experience/{playerId}")
+	public ResponseEntity<Integer> getPlayerExperience(@PathVariable Integer playerId){
+		return ResponseEntity.ok(playerService.calculateExperience(playerId));
+	}
+
 }
 

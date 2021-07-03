@@ -39,5 +39,10 @@ public class TeamController {
 		teamService.deleteById(teamId);
 	}
 
+	@GetMapping("/last/player/{playerId}")
+	public ResponseEntity<Team> getLastTeamByPlayerId(@PathVariable Integer playerId){
+		return ResponseEntity.ok(teamService.findLastTeamByPlayerId(playerId));
+	}
+
 }
 

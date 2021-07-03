@@ -1,18 +1,23 @@
 package com.example.playerteam.service.impl;
 
 import com.example.playerteam.entity.Contract;
+import com.example.playerteam.entity.Player;
 import com.example.playerteam.repository.ContractRepository;
 import com.example.playerteam.service.ContractService;
+import com.example.playerteam.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ContractServiceImpl implements ContractService {
     private final ContractRepository contractRepository;
+    private final PlayerService playerService;
 
     @Override
     public List<Contract> findAll() {
@@ -38,5 +43,15 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public void deleteById(Integer contractId) {
         contractRepository.deleteById(contractId);
+    }
+
+    @Override
+    public Contract findFinalContractByPlayerId(Integer playerId) {
+        Player player = playerService.findById(playerId);
+        return player.getContracts()
+                .stream()
+                .sorted(Comparator.comparing(Contract::getStartDate))
+                .collect(Collectors.toList())
+                .get(0);
     }
 }

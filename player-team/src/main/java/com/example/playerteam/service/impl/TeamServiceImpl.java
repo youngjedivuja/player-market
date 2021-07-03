@@ -2,6 +2,8 @@ package com.example.playerteam.service.impl;
 
 import com.example.playerteam.entity.*;
 import com.example.playerteam.repository.TeamRepository;
+import com.example.playerteam.service.ContractService;
+import com.example.playerteam.service.PlayerService;
 import com.example.playerteam.service.TeamService;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TeamServiceImpl implements TeamService {
 	private final TeamRepository teamRepository;
+	private final ContractService contractService;
 
 	@Override
 	public List<Team> findAll() {
@@ -37,6 +40,12 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	public void deleteById(Integer teamId) {
 		teamRepository.deleteById(teamId);
+	}
+
+	@Override
+	public Team findLastTeamByPlayerId(Integer playerId) {
+		Contract contract = contractService.findFinalContractByPlayerId(playerId);
+		return contract.getTeam();
 	}
 
 

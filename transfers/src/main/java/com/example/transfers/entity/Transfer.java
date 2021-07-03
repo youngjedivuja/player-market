@@ -24,8 +24,8 @@ public class Transfer extends Auditable {
 	@Column(name = "player_id")
 	private Integer playerId;
 	@Column(name = "transfer_fee")
-	private Double transferFee;
+	private Float transferFee;
 	@Column(name = "commission")
-	private Double commission;
+	private Float commission;
 	
 }
