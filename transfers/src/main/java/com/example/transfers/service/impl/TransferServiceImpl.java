@@ -1,7 +1,9 @@
 package com.example.transfers.service.impl;
 
 import com.example.transfers.entity.*;
+import com.example.transfers.entity.external.Player;
 import com.example.transfers.repository.TransferRepository;
+import com.example.transfers.service.PlayerService;
 import com.example.transfers.service.TransferService;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TransferServiceImpl implements TransferService {
 	private final TransferRepository transferRepository;
+	private final PlayerService playerService;
 
 	@Override
 	public List<Transfer> findAll() {
@@ -26,6 +29,7 @@ public class TransferServiceImpl implements TransferService {
 
 	@Override
 	public Transfer save(Transfer transfer) {
+		Player player = playerService.findById(transfer.getPlayerId());
 		return transferRepository.save(transfer);
 	}
 

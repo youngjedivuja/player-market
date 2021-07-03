@@ -1,15 +1,16 @@
-package com.example.transfers.repository.external;
+package com.example.transfers.repository.external.impl;
 
 import com.example.transfers.entity.external.Player;
+import com.example.transfers.repository.external.AbstractRepository;
+import com.example.transfers.repository.external.PlayerRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Optional;
 
 @Repository
-public class PlayerRepositoryImpl extends AbstractRepository<Player> implements PlayerRepository{
+public class PlayerRepositoryImpl extends AbstractRepository<Player> implements PlayerRepository {
 
     //url for players service
     @Value("${players.service.url}")
