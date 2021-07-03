@@ -1,0 +1,31 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: TRANSFERS-SERVICE
+          uri: lb://TRANSFERS-SERVICE
+          predicates:
+           - Path=/transfers/**
+        - id: PLAYERTEAM-SERVICE
+          uri: lb://PLAYERTEAM-SERVICE
+          predicates:
+          - Path=/players/**
+        - id: PLAYERTEAM-SERVICE
+          uri: lb://PLAYERTEAM-SERVICE
+          predicates:
+          - Path=/teams/**
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
