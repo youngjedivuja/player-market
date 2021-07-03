@@ -50,7 +50,7 @@ public class ContractServiceImpl implements ContractService {
         Player player = playerService.findById(playerId);
         return player.getContracts()
                 .stream()
-                .sorted(Comparator.comparing(Contract::getStartDate))
+                .sorted(Comparator.comparing(Contract::getStartDate).reversed())
                 .collect(Collectors.toList())
                 .get(0);
     }

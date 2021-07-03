@@ -44,11 +44,19 @@ public class TransferServiceImpl implements TransferService {
         Team toTeam = teamService.findById(transfer.getToTeamId());
         Team fromTeam = teamService.findById(transfer.getFromTeamId());
 
-        transfer.setTransferFee(calculateTransferFee(fromTeam, toTeam, player, transfer.getCommission()));
+        Contract lastContract = contractService.findFinalContractByPlayerId(player.getId());
+
+        transfer.setTransferFee(calculateTransferFee(lastContract, fromTeam, toTeam, player, transfer.getCommission()));
+
+        //Ending last contract
+        lastContract.setEndDate(LocalDate.now());
+        contractService.update(lastContract);
 
         //New contract to be saved
         Contract contract = new Contract(LocalDate.now(), toTeam, player);
         contractService.save(contract);
+
+
 
         return transferRepository.save(transfer);
     }
@@ -63,12 +71,12 @@ public class TransferServiceImpl implements TransferService {
         transferRepository.deleteById(transferId);
     }
 
-    public Float calculateTransferFee(Team fromTeam, Team toTeam, Player player, Float commission) {
+    public Float calculateTransferFee(Contract lastContract, Team fromTeam, Team toTeam, Player player, Float commission) {
         Integer monthsOfExperience = playerService.calculateExperience(player.getId());
         Integer age = player.getAge();
 
         //last or current player's team
-        Team lastTeam = teamService.findLastTeamByPlayerId(player.getId());
+        Team lastTeam = lastContract.getTeam();
 
         if (monthsOfExperience == null || monthsOfExperience < 0)
             throw new IllegalArgumentException("Player cannot be transferred if 'monthsOfExperience' is null or less than zero");

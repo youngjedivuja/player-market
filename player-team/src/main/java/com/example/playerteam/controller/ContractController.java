@@ -4,10 +4,7 @@ import com.example.playerteam.entity.Contract;
 import com.example.playerteam.service.ContractService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/contracts")
@@ -18,5 +15,15 @@ public class ContractController {
     @PostMapping
     public ResponseEntity<Contract> save(@RequestBody Contract contract){
         return ResponseEntity.ok(contractService.save(contract));
+    }
+
+    @PutMapping
+    public ResponseEntity<Contract> update(@RequestBody Contract contract){
+        return ResponseEntity.ok(contractService.update(contract));
+    }
+
+    @GetMapping("/final/{playerId}")
+    public ResponseEntity<Contract> getFinalContractByPlayerId(@PathVariable Integer playerId){
+        return ResponseEntity.ok(contractService.findFinalContractByPlayerId(playerId));
     }
 }

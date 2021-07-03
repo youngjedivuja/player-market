@@ -37,6 +37,10 @@ public abstract class AbstractRepository<T> {
         return restTemplate.exchange(uri, HttpMethod.POST, new HttpEntity<>(body, null), this.entity).getBody();
     }
 
+    protected T putForEntity(URI uri, T body){
+        return restTemplate.exchange(uri, HttpMethod.PUT, new HttpEntity<>(body, null), this.entity).getBody();
+    }
+
     //builder for URI
     protected URI getURI(String serviceUrl, String... pathSegment) {
         return UriComponentsBuilder.fromUriString(serviceUrl)
