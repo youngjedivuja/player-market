@@ -1,11 +1,12 @@
 spring:
   application:
     name: PLAYERTEAM-SERVICE
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/player_market
+    username: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+server:
+  port: 8080
+
