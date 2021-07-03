@@ -10,7 +10,6 @@ create table player
 	last_modified_by varchar(64) default 'system' null,
 	record_status int default 1 null
 );
-
 create table team
 (
 	team_id int auto_increment
@@ -21,7 +20,6 @@ create table team
 	last_modified_by varchar(64) default 'system' null,
 	record_status int default 1 null
 );
-
 create table contract
 (
 	contract_id int auto_increment
@@ -39,7 +37,6 @@ create table contract
 	constraint contract_team_fk
 		foreign key (team_fk) references team (team_id)
 );
-
 create table transfer
 (
 	transfer_id int auto_increment
