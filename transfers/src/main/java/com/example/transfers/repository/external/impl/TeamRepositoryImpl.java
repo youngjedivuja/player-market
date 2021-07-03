@@ -4,10 +4,12 @@ import com.example.transfers.entity.external.Team;
 import com.example.transfers.repository.external.AbstractRepository;
 import com.example.transfers.repository.external.TeamRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.net.URI;
 import java.util.Optional;
 
+@Repository
 public class TeamRepositoryImpl extends AbstractRepository<Team> implements TeamRepository {
 
     //url for teams service

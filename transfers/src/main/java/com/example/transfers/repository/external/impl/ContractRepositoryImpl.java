@@ -4,9 +4,11 @@ import com.example.transfers.entity.external.Contract;
 import com.example.transfers.repository.external.AbstractRepository;
 import com.example.transfers.repository.external.ContractRepository;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.net.URI;
 
+@Repository
 public class ContractRepositoryImpl extends AbstractRepository<Contract> implements ContractRepository {
 
     //url for contract service
