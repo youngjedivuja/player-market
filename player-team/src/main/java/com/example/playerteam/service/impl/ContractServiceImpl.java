@@ -52,6 +52,8 @@ public class ContractServiceImpl implements ContractService {
                 .stream()
                 .sorted(Comparator.comparing(Contract::getStartDate).reversed())
                 .collect(Collectors.toList())
-                .get(0);
+                .stream()
+                .findFirst()
+                .orElseThrow(() -> new NoSuchElementException("ContractService.finalContract.notFound"));
     }
 }
