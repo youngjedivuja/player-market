@@ -1,4 +1,3 @@
-
 spring:
   application:
     name: API-GATEWAY
@@ -8,15 +7,19 @@ spring:
         - id: TRANSFERS-SERVICE
           uri: lb://TRANSFERS-SERVICE
           predicates:
-           - Path=/transfers/**
+            - Path=/transfers/**
         - id: PLAYERTEAM-SERVICE
           uri: lb://PLAYERTEAM-SERVICE
           predicates:
-          - Path=/players/**
+            - Path=/players/**
         - id: PLAYERTEAM-SERVICE
           uri: lb://PLAYERTEAM-SERVICE
           predicates:
-          - Path=/teams/**
+            - Path=/teams/**
+        - id: PLAYERTEAM-SERVICE
+          uri: lb://PLAYERTEAM-SERVICE
+          predicates:
+            - Path=/contracts/**
 server:
   port: 9191
 

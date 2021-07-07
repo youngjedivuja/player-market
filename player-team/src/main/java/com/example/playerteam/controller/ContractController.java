@@ -6,11 +6,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/contracts")
 @RequiredArgsConstructor
 public class ContractController {
     private final ContractService contractService;
+
+    @GetMapping
+    public ResponseEntity<List<Contract>> getAllContact(){
+        return ResponseEntity.ok(contractService.findAll());
+    }
 
     @PostMapping
     public ResponseEntity<Contract> save(@RequestBody Contract contract){
