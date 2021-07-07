@@ -78,8 +78,8 @@ public class TransferServiceImpl implements TransferService {
         //last or current player's team
         Team lastTeam = lastContract.getTeam();
 
-        if (monthsOfExperience == null || monthsOfExperience < 0)
-            throw new IllegalArgumentException("Player cannot be transferred if 'monthsOfExperience' is null or less than zero");
+        //since months of experience is being calculated and date miscalculations are handled in that method already, there is no need to check
+        //or throw any exceptions regarding experience, in the worst case the value will be zero which is entirely possible
         if (age == null || age < 0)
             throw new IllegalArgumentException("Player cannot be transferred if 'age' is null or less than zero");
         if (lastTeam.equals(toTeam) || toTeam.equals(fromTeam))

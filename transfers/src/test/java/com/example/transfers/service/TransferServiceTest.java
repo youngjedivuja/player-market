@@ -82,4 +82,10 @@ public class TransferServiceTest {
         assertThrows(IllegalTeamTransferException.class, () -> transferService.calculateTransferFee(contract, fromTeam, toTeam, player, commission));
     }
 
+    @Test
+    void test_transferFeeIsZeroIfExperienceIsZero(){
+        contract.setEndDate(LocalDate.now().minusDays(1));
+        assertEquals(transferService.calculateTransferFee(contract, fromTeam, toTeam, player, commission), 0);
+    }
+
 }
