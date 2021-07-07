@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /*
  Value object for external Person entity
  */
@@ -16,4 +18,5 @@ public class Player extends Auditable {
     private String firstName;
     private String lastName;
     private Integer age;
+    private List<Contract> contractList;
 }
