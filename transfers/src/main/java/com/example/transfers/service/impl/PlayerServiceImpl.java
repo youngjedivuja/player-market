@@ -22,4 +22,9 @@ public class PlayerServiceImpl implements PlayerService {
     public Integer calculateExperience(Integer playerId) {
         return playerRepository.calculateExperience(playerId);
     }
+
+    @Override
+    public Player save(Player player) {
+        return playerRepository.save(player);
+    }
 }

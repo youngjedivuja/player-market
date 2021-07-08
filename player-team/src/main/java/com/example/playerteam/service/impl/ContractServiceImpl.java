@@ -32,6 +32,7 @@ public class ContractServiceImpl implements ContractService {
 
     @Override
     public Contract save(Contract contract) {
+        System.out.println(contract.getPlayer().getId());
         return contractRepository.save(contract);
     }
 

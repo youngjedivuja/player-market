@@ -7,4 +7,6 @@ public interface PlayerService {
     Player findById(Integer id);
 
     Integer calculateExperience(Integer playerId);
+
+    Player save(Player player);
 }

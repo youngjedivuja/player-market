@@ -31,4 +31,10 @@ public class TeamRepositoryImpl extends AbstractRepository<Team> implements Team
         URI uri = getURI(teamServiceUrl, "last/player/" + playerId);
         return getOptionalForEntity(uri, Team.class);
     }
+
+    @Override
+    public Team save(Team team) {
+        URI uri = getURI(teamServiceUrl);
+        return postForEntity(uri, team);
+    }
 }

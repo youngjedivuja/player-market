@@ -31,4 +31,10 @@ public class PlayerRepositoryImpl extends AbstractRepository<Player> implements 
         URI uri = getURI(playerServiceUrl, "experience/" + id);
         return getResponseForEntity(uri).getBody();
     }
+
+    @Override
+    public Player save(Player player) {
+        URI uri = getURI(playerServiceUrl);
+        return postForEntity(uri, player);
+    }
 }

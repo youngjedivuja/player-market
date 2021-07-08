@@ -35,7 +35,6 @@ public class ContractRepositoryImpl extends AbstractRepository<Contract> impleme
     @Override
     public Contract update(Contract contract) {
         URI uri = getURI(contractServiceUrl);
-        System.out.println(contract);
         return putForEntity(uri, contract);
     }
 }

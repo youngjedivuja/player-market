@@ -8,4 +8,6 @@ public interface PlayerRepository {
     Optional<Player> findById(Integer id);
 
     Integer calculateExperience(Integer id);
+
+    Player save(Player player);
 }

@@ -18,6 +18,8 @@ import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
+
 @Service
 @RequiredArgsConstructor
 public class TransferServiceImpl implements TransferService {
@@ -40,8 +42,9 @@ public class TransferServiceImpl implements TransferService {
 
     @Override
     public Transfer save(Transfer transfer) {
-        Player player = playerService.findById(transfer.getPlayerId());
+        System.out.println(transfer.getPlayerId());
         Team toTeam = teamService.findById(transfer.getToTeamId());
+        Player player = playerService.findById(transfer.getPlayerId());
         Team fromTeam = teamService.findById(transfer.getFromTeamId());
 
         Contract lastContract = contractService.findFinalContractByPlayerId(player.getId());
@@ -72,8 +75,9 @@ public class TransferServiceImpl implements TransferService {
     }
 
     public Float calculateTransferFee(Contract lastContract, Team fromTeam, Team toTeam, Player player, Float commission) {
-        Integer monthsOfExperience = playerService.calculateExperience(player.getId());
+
         Integer age = player.getAge();
+        Integer monthsOfExperience = playerService.calculateExperience(player.getId());
 
         //last or current player's team
         Team lastTeam = lastContract.getTeam();

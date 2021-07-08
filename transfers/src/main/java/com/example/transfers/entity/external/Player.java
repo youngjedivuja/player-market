@@ -18,5 +18,4 @@ public class Player extends Auditable {
     private String firstName;
     private String lastName;
     private Integer age;
-    private List<Contract> contractList;
 }

@@ -8,4 +8,6 @@ public interface TeamRepository {
     Optional<Team> findById(Integer id);
 
     Optional<Team> findLastTeamByPlayerId(Integer playerId);
+
+    Team save(Team team);
 }
