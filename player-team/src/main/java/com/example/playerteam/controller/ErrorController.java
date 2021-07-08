@@ -33,8 +33,6 @@ public class ErrorController {
     }
 
     @ExceptionHandler({
-            IllegalArgumentException.class,
-            IllegalStateException.class,
             HttpRequestMethodNotSupportedException.class,
             HttpMessageNotReadableException.class,
             MethodArgumentTypeMismatchException.class,
